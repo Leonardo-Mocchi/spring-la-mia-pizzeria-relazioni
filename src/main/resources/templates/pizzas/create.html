@@ -12,15 +12,21 @@
         <th:block th:replace="~{fragments/navbar :: navbar('home')}"></th:block>
     </header>
     <main>
-        <section class="container bg-dark rounded-4 p-5 mt-5">
-            <h1 class="mb-3">Request a new pizza here!</h1>
+        <section class="container rounded-4 p-5 mt-5" style="background: rgba(33, 37, 41, 0.95); backdrop-filter: blur(10px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7); border: 2px solid rgba(255, 193, 7, 0.3);">
+            <div class="text-center mb-4">
+                <i class="fas fa-utensils display-3 text-warning mb-3"></i>
+                <h1 class="mb-3 fw-bold text-warning">Request Your Custom Pizza!</h1>
+                <p class="lead text-light">Tell us what you want and we'll make it happen</p>
+            </div>
 
             <!-- * form -->
             <div class="container pt-3">
                 <form id="pizza-form" th:object="${pizza}" th:action="@{/pizzas/create}" method="post">
-                    <div class="mb-3">
-                        <label class="form-label m-0 col-2 mb-2" for="name">Name: </label>
-                        <input class="form-control " type="text" id="name" th:field="*{name}" placeholder="YOUR Pizza's own Name" th:errorclass="is-invalid" />
+                    <div class="mb-4">
+                        <label class="form-label fw-bold mb-2" for="name">
+                            <i class="fas fa-signature text-warning me-2"></i>Pizza Name:
+                        </label>
+                        <input class="form-control form-control-lg" type="text" id="name" th:field="*{name}" placeholder="e.g., Margherita Supreme" th:errorclass="is-invalid" style="border-radius: 10px;" />
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
                             <ul>
                                 <li th:each="error: ${#fields.errors('name')}" th:text="${error}" />
@@ -28,9 +34,11 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label m-0 col-2 mb-2" for="description">Ingredients: </label>
-                        <input class="form-control " type="text" id="description" th:field="*{description}" placeholder="YOUR Pizza's Ingredients" th:errorclass="is-invalid" />
+                    <div class="mb-4">
+                        <label class="form-label fw-bold mb-2" for="description">
+                            <i class="fas fa-list text-warning me-2"></i>Ingredients:
+                        </label>
+                        <input class="form-control form-control-lg" type="text" id="description" th:field="*{description}" placeholder="e.g., Tomato sauce, Mozzarella, Basil" th:errorclass="is-invalid" style="border-radius: 10px;" />
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
                             <ul>
                                 <li th:each="error: ${#fields.errors('description')}" th:text="${error}" />
@@ -38,9 +46,11 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label m-0 col-2 mb-2" for="picture">Image Link: </label>
-                        <input class="form-control " type="text" id="picture" th:field="*{picture}" placeholder="YOUR Pizza's Image Link" th:errorclass="is-invalid" />
+                    <div class="mb-4">
+                        <label class="form-label fw-bold mb-2" for="picture">
+                            <i class="fas fa-image text-warning me-2"></i>Image URL:
+                        </label>
+                        <input class="form-control form-control-lg" type="text" id="picture" th:field="*{picture}" placeholder="https://example.com/pizza-image.jpg" th:errorclass="is-invalid" style="border-radius: 10px;" />
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('picture')}">
                             <ul>
                                 <li th:each="error: ${#fields.errors('picture')}" th:text="${error}" />
@@ -48,9 +58,11 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label m-0 col-2 mb-2" for="price">Suggested Price: </label>
-                        <input class="form-control" type="number" step="0.1" id="price" th:field="*{price}" placeholder="YOUR Pizza's Suggested price" th:errorclass="is-invalid" />
+                    <div class="mb-4">
+                        <label class="form-label fw-bold mb-2" for="price">
+                            <i class="fas fa-euro-sign text-warning me-2"></i>Suggested Price (€):
+                        </label>
+                        <input class="form-control form-control-lg" type="number" step="0.1" id="price" th:field="*{price}" placeholder="e.g., 12.50" th:errorclass="is-invalid" style="border-radius: 10px;" />
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}">
                             <ul>
                                 <li th:each="error: ${#fields.errors('price')}" th:text="${error}" />
@@ -58,14 +70,14 @@
                         </div>
                     </div>
 
-                    <hr class="text-white">
+                    <hr class="text-white my-4">
 
-                    <div class="mt-5 mb-3 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">
-                            Submit Recipe
+                    <div class="mt-5 mb-3 d-flex justify-content-between gap-3">
+                        <button type="submit" class="btn btn-primary btn-lg flex-grow-1" style="border-radius: 10px; font-weight: bold;">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Recipe
                         </button>
-                        <button type="reset" class="btn btn-warning">
-                            Reset Fields
+                        <button type="reset" class="btn btn-warning btn-lg flex-grow-1" style="border-radius: 10px; font-weight: bold;">
+                            <i class="fas fa-redo me-2"></i>Reset Fields
                         </button>
                     </div>
                 </form>
