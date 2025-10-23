@@ -6,7 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -43,6 +45,10 @@ public class Pizza {
     @DecimalMax(value = "99.99", message = "Price cannot be set higher than 99.99")
     @Digits(integer = 2, fraction = 2, message = "Price must include cents")
     private BigDecimal price;
+
+    @ManyToOne
+    @JoinColumn(name = "special_offer_id")
+    private SpecialOffer specialOffer;
 
     public Pizza() {
     }
