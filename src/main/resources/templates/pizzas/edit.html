@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{fragments/resources :: headTags}" />
+    <title>Change a Pizza</title>
+</head>
+
+<body class="bg-light-subtle text-light" th:style="|background: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 90%), url(https://www.dogtownpizza.com/wp-content/uploads/2022/04/iStock-1349560792-scaled.jpg) no-repeat center center fixed; background-size: cover;|">
+
+    <header>
+        <th:block th:replace="~{fragments/navbar :: navbar('home')}"></th:block>
+    </header>
+    <main>
+        <section class="container bg-dark rounded-4 p-5 mt-5">
+            <h1 class="mb-3">How would you like to customize* your Pizza?</h1>
+            <p>*no assurances are made about price customization</p>
+
+            <!-- * form -->
+            <div class="container pt-3">
+                <form id="pizza-form" th:object="${pizza}" th:action="@{/pizzas/edit/{id} (id=*{id})}" method="post">
+                    <div class="mb-3">
+                        <label class="form-label m-0 col-2 mb-2" for="name">Name: </label>
+                        <input class="form-control " type="text" id="name" th:field="*{name}" placeholder="YOUR Pizza's own Name" th:errorclass="is-invalid" />
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
+                            <ul>
+                                <li th:each="error: ${#fields.errors('name')}" th:text="${error}" />
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label m-0 col-2 mb-2" for="description">Ingredients: </label>
+                        <input class="form-control " type="text" id="description" th:field="*{description}" placeholder="YOUR Pizza's Ingredients" th:errorclass="is-invalid" />
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
+                            <ul>
+                                <li th:each="error: ${#fields.errors('description')}" th:text="${error}" />
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label m-0 col-2 mb-2" for="picture">Image Link: </label>
+                        <input class="form-control " type="text" id="picture" th:field="*{picture}" placeholder="YOUR Pizza's Image Link" th:errorclass="is-invalid" />
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('picture')}">
+                            <ul>
+                                <li th:each="error: ${#fields.errors('picture')}" th:text="${error}" />
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label m-0 col-2 mb-2" for="price">Suggested Price: </label>
+                        <input class="form-control" type="number" step="0.1" id="price" th:field="*{price}" placeholder="YOUR Pizza's Suggested price" th:errorclass="is-invalid" />
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}">
+                            <ul>
+                                <li th:each="error: ${#fields.errors('price')}" th:text="${error}" />
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr class="text-white">
+
+                    <div class="mt-5 mb-3 d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">
+                            Submit Edit
+                        </button>
+                        <button type="reset" class="btn btn-warning">
+                            Reset Fields
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <th:block th:replace="~{fragments/resources :: footerDisclaimer}" />
+    <th:block th:replace="~{fragments/resources :: popper}" />
+</body>
+
+</html>

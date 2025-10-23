@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <div th:fragment="headTags">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- > BOOTSTRAP CSS via WebJars -->
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+        <!-- > FONTAWESOME via WebJars -->
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
+
+        <!-- Styling required for the background fade effect -->
+        <div th:fragment="smallerPagesGradientFix">
+            <style>
+                html,
+                body {
+                    /* height: 100%; */
+                    min-height: 100%;
+                }
+
+                body {
+                    background-attachment: fixed;
+                }
+            </style>
+        </div>
+    </div>
+
+
+
+
+    <title>Resources Fragment</title>
+
+</head>
+
+<body>
+
+
+    <footer th:fragment="footerDisclaimer" class="bg-black text-light text-center py-3 mt-5" style="position: fixed; bottom: 0; width: 100%;">
+        <small>Disclaimer: All pizza images are for illustrative purposes only. Actual products may vary. All trademarks and images belong to their respective owners.</small>
+    </footer>
+    <!-- > BOOTSTRAP JS via WebJars -->
+    <script th:fragment="popper" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

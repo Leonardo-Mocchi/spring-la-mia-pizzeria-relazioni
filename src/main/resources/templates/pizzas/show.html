@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{fragments/resources :: headTags}" />
+    <title>Pizza [[${pizza.name}]]</title>
+</head>
+
+<body class="bg-light-subtle text-light" th:style="|background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 90%), url(${pizza.picture}) no-repeat center center fixed; background-size: cover;|">
+
+    <header>
+        <th:block th:replace="~{fragments/navbar :: navbar('home')}"></th:block>
+    </header>
+
+    <div class="container mt-5 d-flex justify-content-start text-center" style="min-height: 550px; ">
+        <div style="max-height: fit-content; max-width: fit-content; background: radial-gradient(circle at center, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0) 72.5%);" class="p-5 pb-0 mb-0">
+
+            <h1 class="fw-bold pt-5">Pizza [[${pizza.name}]]</h1>
+
+            <h3 class="pt-3 ">We only use the best ingredients* <br> because we care**</h3>
+
+            <p class="pt-3">Our Prime** Selection of ingredients includes:</p>
+            <h5 class="fst-italic">[[${pizza.description}]]</h5>
+            <div class="d-flex justify-content-center">
+                <a name="" id="" class="btn btn-light mt-4 px-5 py-2" th:href="@{/pizzas}" role="button">Wanna check the other pizzas?</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="fs-6 text-dark-emphasis container">
+        <p class="m-0">*when available</p>
+        <p class="m-0">** not really</p>
+    </div>
+    <th:block th:replace="~{fragments/resources :: footerDisclaimer}" />
+    <th:block th:replace="~{fragments/resources :: popper}" />
+</body>
+
+</html>
