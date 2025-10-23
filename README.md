@@ -94,9 +94,9 @@ In alcuni momenti potremmo voler vendere le nostre pizze a un prezzo scontato.
 - [x] una data di fine
 - [x] un titolo
 
-[ ] La pagina di dettaglio della singola pizza mostrerà l’elenco delle offerte collegate e avrà un bottone “Crea nuova offerta speciale” per aggiungerne una nuova.
+[x] La pagina di dettaglio della singola pizza mostrerà l’elenco delle offerte collegate e avrà un bottone “Crea nuova offerta speciale” per aggiungerne una nuova.
 
-[ ] Accanto ad ogni offerta speciale è previsto un bottone che mi porterà a una pagina per modificarla.
+[x] Accanto ad ogni offerta speciale è previsto un bottone che mi porterà a una pagina per modificarla.
 
 Extra:
 
