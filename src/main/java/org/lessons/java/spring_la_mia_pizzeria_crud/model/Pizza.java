@@ -1,7 +1,6 @@
 package org.lessons.java.spring_la_mia_pizzeria_crud.model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -48,8 +47,8 @@ public class Pizza {
     @Digits(integer = 2, fraction = 2, message = "Price must include cents")
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SpecialOffer> offers = new ArrayList<>();
+    @OneToMany(mappedBy = "pizza", cascade = { CascadeType.REMOVE })
+    private List<SpecialOffer> offers;
 
     public Pizza() {
     }

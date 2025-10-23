@@ -26,14 +26,13 @@ public class SpecialOffer {
     private LocalDate offerFirstDay;
 
     @NotNull(message = "The Ending date of the Special Offer MUST NOT BE NULL")
-    @PastOrPresent(message = "The Ending date of the Special Offer MUST NOT BE IN THE FUTURE")
     private LocalDate offerLastDay;
 
     @NotBlank(message = "The name of the Special Offer MUST NOT BE NULL, EMPTY NOR BLANK")
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "pizza_id")
+    @JoinColumn(name = "pizza_id", nullable = false)
     private Pizza pizza;
 
     public SpecialOffer() {
