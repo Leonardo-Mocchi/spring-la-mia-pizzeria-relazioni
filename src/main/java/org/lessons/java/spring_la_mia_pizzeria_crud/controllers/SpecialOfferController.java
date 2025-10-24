@@ -65,16 +65,16 @@ public class SpecialOfferController {
     @GetMapping({ "", "/" })
     public String index(Model model) {
         model.addAttribute("offers", specialOffersRepository.findAll());
-        model.addAttribute("howmany", specialOffersRepository.count());
+        model.addAttribute("offersQuantity", specialOffersRepository.count());
         return "/special-offers/index";
     }
 
     // > SHOW single offer
     @GetMapping("/{id}")
     public String show(@PathVariable Integer id, Model model) {
-        SpecialOffer offer = specialOffersRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid offer id: " + id));
-        model.addAttribute("offer", offer);
+
+        model.addAttribute("offer", specialOffersRepository.findById(id).get());
         return "/special-offers/show";
     }
+
 }
