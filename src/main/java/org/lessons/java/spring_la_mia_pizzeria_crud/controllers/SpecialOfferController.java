@@ -60,4 +60,21 @@ public class SpecialOfferController {
         return "redirect:/pizzas/" + formSpecialOffer.getPizza().getId();
 
     }
+
+    // > INDEX - list all special offers
+    @GetMapping({ "", "/" })
+    public String index(Model model) {
+        model.addAttribute("offers", specialOffersRepository.findAll());
+        model.addAttribute("howmany", specialOffersRepository.count());
+        return "/special-offers/index";
+    }
+
+    // > SHOW single offer
+    @GetMapping("/{id}")
+    public String show(@PathVariable Integer id, Model model) {
+        SpecialOffer offer = specialOffersRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid offer id: " + id));
+        model.addAttribute("offer", offer);
+        return "/special-offers/show";
+    }
 }

@@ -9,7 +9,7 @@
 <body class="bg-light-subtle text-light" th:style="|background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 90%), url(${pizza.picture}) no-repeat center center fixed; background-size: cover;|">
 
     <header>
-        <th:block th:replace="~{fragments/navbar :: navbar('home')}"></th:block>
+        <th:block th:replace="~{fragments/navbar :: navbar('show')}"></th:block>
     </header>
 
     <main class="d-flex flex-column" style="min-height: calc(100vh - 100px); padding-bottom: 100px;">
@@ -45,8 +45,10 @@
                         <ul class="list-group">
                             <li th:each="offer : ${pizza.getOffers()}" class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light border-black">
                                 <div>
-                                    <div class="fw-bold" th:text="${offer.title}">Offer title</div>
-                                    <div class="text-light small"><span th:text="${offer.offerFirstDay}">start</span> — <span th:text="${offer.offerLastDay}">end</span></div>
+                                    <a th:href="@{/special-offers/{id}(id=${offer.id})}" class="text-decoration-none text-light">
+                                        <div class="fw-bold" th:text="${offer.title}">Offer title</div>
+                                        <div class="text-light small"><span th:text="${offer.offerFirstDay}">start</span> — <span th:text="${offer.offerLastDay}">end</span></div>
+                                    </a>
                                 </div>
                                 <div>
                                     <a class="btn btn-warning btn-sm" th:href="@{/special-offers/edit/{id}(id=${offer.id})}">Edit</a>
@@ -60,7 +62,8 @@
                     </div>
 
                     <hr>
-                    <div class="my-3">
+                    <div class="my-3 d-flex gap-2">
+                        <a class="btn btn-outline-light" th:href="@{/special-offers}">View all offers</a>
                         <a class="btn btn-success fw-bold" th:href="@{/pizzas/{id}/special-offers(id=${pizza.id})}">
                             Create a New SPECIAL Offer
                         </a>

@@ -21,13 +21,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold" th:href="@{/}">
+                        <a class="nav-link fw-semibold" th:href="@{/}" th:classappend="${current == 'home'} ? ' active'">
                             <i class="fas fa-home me-1"></i>Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold" th:href="@{/pizzas}">
+                        <a class="nav-link fw-semibold" th:href="@{/pizzas}" th:classappend="${current == 'pizzas'} ? ' active'">
                             <i class="fas fa-list me-1"></i>Pizzas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" th:href="@{/special-offers}" th:classappend="${current == 'offers'} ? ' active'">
+                            <i class="fas fa-tag me-1"></i>Offers
                         </a>
                     </li>
                 </ul>
