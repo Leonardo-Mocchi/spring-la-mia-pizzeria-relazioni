@@ -100,9 +100,7 @@ In alcuni momenti potremmo voler vendere le nostre pizze a un prezzo scontato.
 
 Extra:
 
-- [ ] show
-- [ ] delete
-- [ ] create con la select dell'offerta (separated)
-- [ ] index
-
-Buon lavoro!! 🙂
+- [x] show
+- [x] delete
+- [x] create con la select dell'offerta (separated)
+- [x] index
