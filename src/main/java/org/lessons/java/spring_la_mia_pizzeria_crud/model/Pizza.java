@@ -8,7 +8,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMax;
@@ -32,8 +35,8 @@ public class Pizza {
     private String name;
 
     @Lob
-    @NotBlank(message = "We cannot make the pizza for you if you don't share the ingredients!")
-    @Size(min = 5, max = 100, message = "Ingredients must be within 5 and 100 characters long, if you have custom SPECIAL request, please contact us directly")
+    @NotBlank(message = "Please provide a description for this pizza!")
+    @Size(min = 10, max = 500, message = "Description must be between 10 and 500 characters long")
     private String description;
 
     @NotBlank(message = "Image Link must not be null, empty nor blank")
@@ -49,6 +52,10 @@ public class Pizza {
 
     @OneToMany(mappedBy = "pizza", cascade = { CascadeType.REMOVE })
     private List<SpecialOffer> offers;
+
+    @ManyToMany
+    @JoinTable(name = "pizza_ingredients", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<Ingredient> ingredients;
 
     public Pizza() {
     }
@@ -109,10 +116,17 @@ public class Pizza {
         this.offers = offers;
     }
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @Override
     public String toString() {
-        return String.format("Pizza n° %d is '%s' and costs %.2f € || %s", this.id, this.name, this.price,
-                this.picture);
+        return String.format("Pizza n° %d is '%s' and costs %.2f € || %s", this.id, this.name, this.price, this.picture);
     }
 
 }

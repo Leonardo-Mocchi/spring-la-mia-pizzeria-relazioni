@@ -1,5 +1,7 @@
 package org.lessons.java.spring_la_mia_pizzeria_crud.controllers;
 
+import java.util.List;
+
 import org.lessons.java.spring_la_mia_pizzeria_crud.model.SpecialOffer;
 import org.lessons.java.spring_la_mia_pizzeria_crud.repository.SpecialOffersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,15 +63,18 @@ public class SpecialOfferController {
 
     }
 
-    // > INDEX - list all special offers
-    @GetMapping({ "", "/" })
+    // > INDEX
+    @GetMapping
     public String index(Model model) {
-        model.addAttribute("offers", specialOffersRepository.findAll());
+
+        List<SpecialOffer> specialOffers = specialOffersRepository.findAll();
+
+        model.addAttribute("offers", specialOffers);
         model.addAttribute("offersQuantity", specialOffersRepository.count());
         return "/special-offers/index";
     }
 
-    // > SHOW single offer
+    // > SHOW
     @GetMapping("/{id}")
     public String show(@PathVariable Integer id, Model model) {
 

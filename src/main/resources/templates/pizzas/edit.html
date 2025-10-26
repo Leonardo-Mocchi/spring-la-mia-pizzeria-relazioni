@@ -36,9 +36,9 @@
 
                     <div class="mb-4">
                         <label class="form-label fw-bold mb-2" for="description">
-                            <i class="fas fa-list text-warning me-2"></i>Ingredients:
+                            <i class="fas fa-align-left text-warning me-2"></i>Description:
                         </label>
-                        <input class="form-control form-control-lg" type="text" id="description" th:field="*{description}" placeholder="e.g., Tomato sauce, Mozzarella, Basil" th:errorclass="is-invalid" style="border-radius: 10px;" />
+                        <textarea class="form-control form-control-lg" id="description" th:field="*{description}" placeholder="e.g., A timeless classic that celebrates simplicity and fresh flavors" rows="3" th:errorclass="is-invalid" style="border-radius: 10px;"></textarea>
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
                             <ul>
                                 <li th:each="error: ${#fields.errors('description')}" th:text="${error}" />
@@ -67,6 +67,20 @@
                             <ul>
                                 <li th:each="error: ${#fields.errors('price')}" th:text="${error}" />
                             </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold mb-3">
+                            <i class="fas fa-carrot text-warning me-2"></i>Ingredients:
+                        </label>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 mb-2" th:each="ingredient : ${ingredientsList}">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" th:id="'ingredient-' + ${ingredient.id}" th:value="${ingredient.id}" th:field="*{ingredients}" />
+                                    <label class="form-check-label" th:for="'ingredient-' + ${ingredient.id}" th:text="${ingredient.name}"></label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

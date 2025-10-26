@@ -27,16 +27,25 @@
                 <h1 class="fw-bold pt-3 display-3" style="color: #ffd700; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);">Pizza [[${pizza.name}]]</h1>
 
                 <h3 class="pt-4 text-light" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
-                    <i class="fas fa-leaf text-success me-2"></i>
-                    We only use the best ingredients* <br> because we care**
+                    <i class="fas fa-heart text-danger me-2"></i>
+                    Crafted with passion and tradition
                 </h3>
 
                 <p class="pt-4 text-warning fw-bold fs-5">
-                    <i class="fas fa-star me-2"></i>Our Prime** Selection of ingredients includes:
+                    <i class="fas fa-star me-2"></i>About this pizza:
                 </p>
                 <h5 class="fst-italic text-light mb-4" style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #ffd700;">
                     [[${pizza.description}]]
                 </h5>
+
+                <div th:if="${pizza.getIngredients() != null && pizza.getIngredients().size() > 0}" class="mb-4">
+                    <p class="pt-2 text-warning fw-bold fs-5">
+                        <i class="fas fa-carrot me-2"></i>Ingredients:
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a th:each="ingredient : ${pizza.getIngredients()}" th:href="@{/ingredients/{id}(id=${ingredient.id})}" class="badge bg-warning text-dark fs-6 px-3 py-2 text-decoration-none" th:text="${ingredient.name}"></a>
+                    </div>
+                </div>
 
                 <div>
                     <h2>Available Offers:</h2>
@@ -69,16 +78,7 @@
                         </a>
                     </div>
                 </div>
-
-
             </div>
-        </div>
-
-
-
-        <div class="fs-6 text-secondary-emphasis container mt-auto mb-0" style="background: rgba(0, 0, 0, 0.7); padding: 1rem; border-radius: 10px; opacity: 0.8;">
-            <p class="m-0"><small>*when available</small></p>
-            <p class="m-0"><small>** not really</small></p>
         </div>
     </main>
 

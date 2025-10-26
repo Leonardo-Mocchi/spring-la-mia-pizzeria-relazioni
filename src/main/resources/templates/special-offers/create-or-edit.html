@@ -39,7 +39,7 @@
 
                     <div class="mb-3">
                         <label class="form-label fw-bold mb-2" for="offerFirstDay">
-                            <i class="fas fa-list text-warning me-2"></i>Start date:
+                            <i class="fa-regular fa-calendar-plus text-warning me-2"></i>Start date:
                         </label>
                         <input class="form-control form-control-lg" type="date" id="offerFirstDay" th:field="*{offerFirstDay}" th:errorclass="is-invalid" style="border-radius: 10px;" />
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('offerFirstDay')}">
@@ -51,7 +51,7 @@
 
                     <div class="mb-3">
                         <label class="form-label fw-bold mb-2" for="offerLastDay">
-                            <i class="fas fa-list text-warning me-2"></i>End date:
+                            <i class="fa-regular fa-calendar-xmark text-warning me-2"></i>End date:
                         </label>
                         <input class="form-control form-control-lg" type="date" id="offerLastDay" th:field="*{offerLastDay}" th:errorclass="is-invalid" style="border-radius: 10px;" />
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('offerLastDay')}">

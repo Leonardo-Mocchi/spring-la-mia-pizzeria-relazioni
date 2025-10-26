@@ -31,6 +31,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link fw-semibold" th:href="@{/ingredients}" th:classappend="${current == 'ingredients'} ? ' active'">
+                            <i class="fas fa-carrot me-1"></i>Ingredients
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link fw-semibold" th:href="@{/special-offers}" th:classappend="${current == 'offers'} ? ' active'">
                             <i class="fas fa-tag me-1"></i>Offers
                         </a>
